@@ -1,16 +1,16 @@
-package nz.co.paperkite.delegates
+package nz.co.paperkite.pkandroidplaybook.delegates
 
 import kotlin.reflect.KProperty
 
 /**
  * Created by nate on 23/03/18.
  */
-class LazyVar<T>(private val initilizer: () -> T) {
+class LazyVar<T>(private val initializer: () -> T) {
 	private var _field: T? = null
 	
 	operator fun getValue(thisRef: Any?, property: KProperty<*>): T {
 		if (_field == null) {
-			_field = initilizer()
+			_field = initializer()
 		}
 		
 		return _field!!

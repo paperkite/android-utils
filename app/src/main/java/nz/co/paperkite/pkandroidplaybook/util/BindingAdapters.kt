@@ -1,4 +1,4 @@
-package nz.co.paperkite.util
+package nz.co.paperkite.pkandroidplaybook.util
 
 import android.databinding.BindingAdapter
 import android.widget.ImageView
