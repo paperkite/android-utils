@@ -1,4 +1,4 @@
-package nz.co.paperkite.pkandroidplaybook.delegates
+package nz.co.paperkite.androidutils.delegates
 
 import kotlin.reflect.KProperty
 

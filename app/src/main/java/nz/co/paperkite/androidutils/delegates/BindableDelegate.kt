@@ -1,4 +1,4 @@
-package nz.co.paperkite.pkandroidplaybook.delegates
+package nz.co.paperkite.androidutils.delegates
 
 import android.databinding.BaseObservable
 import kotlin.reflect.KProperty

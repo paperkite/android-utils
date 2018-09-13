@@ -1,4 +1,4 @@
-package nz.co.paperkite.pkandroidplaybook.util
+package nz.co.paperkite.androidutils.util
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

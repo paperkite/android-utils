@@ -1,4 +1,4 @@
-package nz.co.paperkite.pkandroidplaybook.util
+package nz.co.paperkite.androidutils.util
 
 /**
  * Created by nate on 14/03/18.
