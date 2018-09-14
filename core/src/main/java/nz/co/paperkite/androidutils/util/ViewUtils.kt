@@ -4,11 +4,52 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.os.Handler
 import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
+
+private const val SHAKE_DEFAULT_DELTA_NEGATIVE = -8f
+private const val SHAKE_DEFAULT_DELTA_POSITIVE = 8f
+private const val SHAKE_DEFAULT_DURATION = 30L
+private const val SHAKE_HORIZONTAL = 1
+private const val SHAKE_VERTICAL = 0
+private const val SHAKE_DELAY = 0L
+private const val SHAKE_REPETITIONS_DEFAULT = 5
+
+fun View.shake(
+		numberOfShakes: Int = SHAKE_REPETITIONS_DEFAULT,
+		duration: Long = SHAKE_DEFAULT_DURATION,
+		direction: Int = SHAKE_HORIZONTAL,
+		deltaNegative: Float = SHAKE_DEFAULT_DELTA_NEGATIVE,
+		deltaPositive: Float = SHAKE_DEFAULT_DELTA_POSITIVE,
+		delay: Long = SHAKE_DELAY,
+		listener: Animation.AnimationListener? = null
+) {
+	val anim = TranslateAnimation(
+			if(direction == SHAKE_HORIZONTAL) deltaNegative else 0f,
+			if(direction == SHAKE_HORIZONTAL) deltaPositive else 0f,
+			if(direction == SHAKE_VERTICAL) deltaNegative else 0f,
+			if(direction == SHAKE_VERTICAL) deltaPositive else 0f
+	).apply {
+		this.duration = duration
+		this.repeatCount = numberOfShakes
+		this.repeatMode = Animation.REVERSE
+		listener?.let { this.setAnimationListener(it) }
+	}
+	
+	if(delay == 0L) {
+		startAnimation(anim)
+	} else {
+		(handler ?: Handler()).postDelayed({
+			startAnimation(anim)
+		}, delay)
+	}
+}
 
 infix fun View.goneIf(shouldBeGone: Boolean) = apply {
 	visibility = if(shouldBeGone) View.GONE else View.VISIBLE
