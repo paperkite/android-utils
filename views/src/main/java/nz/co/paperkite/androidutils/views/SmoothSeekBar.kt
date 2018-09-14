@@ -5,7 +5,7 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.SeekBar
-import nz.co.paperkite.androidutils.SmoothSeekBar.Companion.MAX_VALUE
+import nz.co.paperkite.androidutils.views.SmoothSeekBar.Companion.MAX_VALUE
 
 /**
  * A simple extension to [SeekBar] which allows you to have a small amount of anchor points but allowing
