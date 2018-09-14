@@ -107,3 +107,13 @@ fun Drawable.toBitmap(): Bitmap {
 	return bitmap
 }
 
+/**
+ * Sets a click listener with the given delay, to prevent duplicate actions from fast taps
+ */
+fun View.setOneOffClickListener(delay: Long = OnOneOffClickListener.MIN_CLICK_INTERVAL, listener: (View) -> Unit) {
+	setOnClickListener(object : OnOneOffClickListener(delay) {
+		override fun onSingleClick(v: View) {
+			listener(v)
+		}
+	})
+}
