@@ -19,8 +19,8 @@ dependencies {
   // if you want everything together:
   implementation "com.github.paperkite:android-utils:$android-utils-version"
   
-  // core utils
-  implementation "com.github.paperkite.android-utils:core:$android-utils-version"
+  // pk generic utils
+  implementation "com.github.paperkite.android-utils:pktx:$android-utils-version"
   
   // rx utils
   implementation "com.github.paperkite.android-utils:rx:$android-utils-version"
