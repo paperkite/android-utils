@@ -1,4 +1,4 @@
-package nz.co.paperkite.androidutils;
+package nz.co.paperkite.androidutils.arch;
 
 import org.junit.Test;
 

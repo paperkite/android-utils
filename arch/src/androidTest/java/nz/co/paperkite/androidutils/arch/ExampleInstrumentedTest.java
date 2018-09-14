@@ -1,4 +1,4 @@
-package nz.co.paperkite.androidutils;
+package nz.co.paperkite.androidutils.arch;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
 		// Context of the app under test.
 		Context appContext = InstrumentationRegistry.getTargetContext();
 		
-		assertEquals("nz.co.paperkite.androidutils.test", appContext.getPackageName());
+		assertEquals("nz.co.paperkite.androidutils.arch.test", appContext.getPackageName());
 	}
 }

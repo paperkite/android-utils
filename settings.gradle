@@ -1,1 +1,1 @@
-include ':core', ':rx', ':views'
+include ':core', ':rx', ':views', ':arch'

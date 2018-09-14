@@ -1,4 +1,4 @@
-package nz.co.paperkite.androidutils
+package nz.co.paperkite.androidutils.views
 
 import android.content.Context
 import android.support.v4.view.ViewPager

@@ -1,5 +1,4 @@
-package nz.co.paperkite.androidutils;
-
+package nz.co.paperkite.androidutils.rx;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;

@@ -1,4 +1,4 @@
-package nz.co.paperkite.androidutils
+package nz.co.paperkite.androidutils.views
 
 import android.animation.Animator
 import android.animation.ValueAnimator
