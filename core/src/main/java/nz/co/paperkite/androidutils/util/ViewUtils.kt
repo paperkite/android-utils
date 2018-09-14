@@ -88,6 +88,18 @@ fun View.getAbsCenterY(): Float {
 	return absPos[1] + this.height / 2f
 }
 
+fun View.getAbsTopY(): Float {
+	val absPos: IntArray = intArrayOf(0, 0)
+	this.getLocationOnScreen(absPos)
+	return absPos[1].toFloat()
+}
+
+fun View.getAbsBottomY(): Float {
+	val absPos: IntArray = intArrayOf(0, 0)
+	this.getLocationOnScreen(absPos)
+	return (absPos[1] + this.height).toFloat()
+}
+
 fun Drawable.toBitmap(): Bitmap {
 	val bitmap: Bitmap?
 	
