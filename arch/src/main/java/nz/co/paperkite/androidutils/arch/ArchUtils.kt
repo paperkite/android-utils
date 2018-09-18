@@ -3,6 +3,7 @@ package nz.co.paperkite.androidutils.arch
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.Transformations
 
 /**
  * This function creates a [LiveData] of a [Pair] of the two types provided. The resulting LiveData is updated whenever either input LiveData updates and all LiveData have updated at least once before.
@@ -76,3 +77,5 @@ infix fun <A, B> LiveData<A>.zip(b: LiveData<B>): LiveData<Pair<A, B>> = zipLive
  * Three [LiveData] version of [zip]
  */
 fun <A, B, C> zip(a: LiveData<A>, b: LiveData<B>, c: LiveData<C>): LiveData<Triple<A, B, C>> = zipLiveData(a, b, c)
+
+infix fun <T, Y> LiveData<T>.map(transformation: (T) -> Y): LiveData<Y> = Transformations.map(this, transformation)
