@@ -80,7 +80,7 @@ fun <A, B, C> zip(a: LiveData<A>, b: LiveData<B>, c: LiveData<C>): LiveData<Trip
 /**
  * Shorthand for Transformations.map(LiveData) { ... }
  */
-infix fun <T, Y> LiveData<T>.map(transformation: (T) -> Y): LiveData<Y> = Transformations.map(this, transformation)
+fun <T, Y> LiveData<T>.map(transformation: (T) -> Y): LiveData<Y> = Transformations.map(this, transformation)
 
 /**
  * Variant of [createViewModel] for [FragmentActivity]s.
