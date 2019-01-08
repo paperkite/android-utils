@@ -1,9 +1,8 @@
 package nz.co.paperkite.androidutils.arch
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.Transformations
+import android.arch.lifecycle.*
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 
 /**
  * This function creates a [LiveData] of a [Pair] of the two types provided. The resulting LiveData is updated whenever either input LiveData updates and all LiveData have updated at least once before.
@@ -78,4 +77,65 @@ infix fun <A, B> LiveData<A>.zip(b: LiveData<B>): LiveData<Pair<A, B>> = zipLive
  */
 fun <A, B, C> zip(a: LiveData<A>, b: LiveData<B>, c: LiveData<C>): LiveData<Triple<A, B, C>> = zipLiveData(a, b, c)
 
+/**
+ * Shorthand for Transformations.map(LiveData) { ... }
+ */
 infix fun <T, Y> LiveData<T>.map(transformation: (T) -> Y): LiveData<Y> = Transformations.map(this, transformation)
+
+/**
+ * Variant of [createViewModel] for [FragmentActivity]s.
+ *
+ * Creates an instance of [VM].
+ * Takes a parameter which is a function that returns instance of [VM].
+ *
+ * Useful for reducing boilerplate of writing a factory for every single [ViewModel] subclass which
+ * requires constructor parameters.
+ */
+inline fun <reified VM : BaseViewModel<*>> FragmentActivity.createViewModel(
+		crossinline factory: () -> VM
+): VM = ViewModelProviders.of(
+		this,
+		object : ViewModelProvider.Factory {
+			@Suppress("UNCHECKED_CAST")
+			override fun <T : ViewModel> create(aClass: Class<T>): T = factory() as T
+		}
+).get(VM::class.java)
+
+/**
+ * Variant of [createViewModel] for [Fragment]s.
+ *
+ * Creates an instance of [VM].
+ * Takes a parameter which is a function that returns instance of [VM].
+ *
+ * Useful for reducing boilerplate of writing a factory for every single [ViewModel] subclass which
+ * requires constructor parameters.
+ */
+inline fun <reified VM : BaseViewModel<*>> Fragment.createViewModel(
+		crossinline factory: () -> VM
+): VM = ViewModelProviders.of(
+		this,
+		object : ViewModelProvider.Factory {
+			@Suppress("UNCHECKED_CAST")
+			override fun <T : ViewModel> create(aClass: Class<T>): T = factory() as T
+		}
+).get(VM::class.java)
+
+/**
+ * Variant of [getViewModel] for [FragmentActivity]s.
+ *
+ * Gets an existing [ViewModel] of the type [VM] or creates an instance with the no-arg constructor
+ * if it doesn't already exist.
+ */
+inline fun <reified VM : BaseViewModel<*>> FragmentActivity.getViewModel(): VM =
+		ViewModelProviders.of(this).get(VM::class.java)
+
+
+
+/**
+ * Variant of [getViewModel] for [Fragment]s.
+ *
+ * Gets an existing [ViewModel] of the type [VM] or creates an instance with the no-arg constructor
+ * if it doesn't already exist.
+ */
+inline fun <reified VM : BaseViewModel<*>> Fragment.getViewModel(): VM =
+		ViewModelProviders.of(this).get(VM::class.java)
