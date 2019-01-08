@@ -1,1 +1,1 @@
-include ':pktx', ':rx', ':views', ':arch'
+include ':pktx', ':rx', ':views', ':arch', ':app'
