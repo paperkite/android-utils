@@ -1,1 +1,1 @@
-include ':core', ':rx'
+include ':pktx', ':rx', ':views', ':arch'
