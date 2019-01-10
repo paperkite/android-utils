@@ -91,7 +91,7 @@ fun <T, Y> LiveData<T>.map(transformation: (T) -> Y): LiveData<Y> = Transformati
  * Useful for reducing boilerplate of writing a factory for every single [ViewModel] subclass which
  * requires constructor parameters.
  */
-inline fun <reified VM : BaseViewModel<*>> FragmentActivity.createViewModel(
+inline fun <reified VM : ViewModel> FragmentActivity.createViewModel(
 		crossinline factory: () -> VM
 ): VM = ViewModelProviders.of(
 		this,
@@ -110,7 +110,7 @@ inline fun <reified VM : BaseViewModel<*>> FragmentActivity.createViewModel(
  * Useful for reducing boilerplate of writing a factory for every single [ViewModel] subclass which
  * requires constructor parameters.
  */
-inline fun <reified VM : BaseViewModel<*>> Fragment.createViewModel(
+inline fun <reified VM : ViewModel> Fragment.createViewModel(
 		crossinline factory: () -> VM
 ): VM = ViewModelProviders.of(
 		this,
@@ -126,10 +126,8 @@ inline fun <reified VM : BaseViewModel<*>> Fragment.createViewModel(
  * Gets an existing [ViewModel] of the type [VM] or creates an instance with the no-arg constructor
  * if it doesn't already exist.
  */
-inline fun <reified VM : BaseViewModel<*>> FragmentActivity.getViewModel(): VM =
+inline fun <reified VM : ViewModel> FragmentActivity.getViewModel(): VM =
 		ViewModelProviders.of(this).get(VM::class.java)
-
-
 
 /**
  * Variant of [getViewModel] for [Fragment]s.
@@ -137,5 +135,5 @@ inline fun <reified VM : BaseViewModel<*>> FragmentActivity.getViewModel(): VM =
  * Gets an existing [ViewModel] of the type [VM] or creates an instance with the no-arg constructor
  * if it doesn't already exist.
  */
-inline fun <reified VM : BaseViewModel<*>> Fragment.getViewModel(): VM =
+inline fun <reified VM : ViewModel> Fragment.getViewModel(): VM =
 		ViewModelProviders.of(this).get(VM::class.java)
