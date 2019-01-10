@@ -17,18 +17,18 @@ repositories {
 ```
 dependencies {
   // if you want everything together:
-  implementation "com.github.paperkite:android-utils:$android-utils-version"
+  implementation "com.github.paperkite:android-utils:$android_utils_version"
   
   // pk generic utils
-  implementation "com.github.paperkite.android-utils:pktx:$android-utils-version"
+  implementation "com.github.paperkite.android-utils:pktx:$android_utils_version"
   
   // rx utils
-  implementation "com.github.paperkite.android-utils:rx:$android-utils-version"
+  implementation "com.github.paperkite.android-utils:rx:$android_utils_version"
 
   // arch utils
-  implementation "com.github.paperkite.android-utils:arch:$android-utils-version"
+  implementation "com.github.paperkite.android-utils:arch:$android_utils_version"
 
   // handy custom views
-  implementation "com.github.paperkite.android-utils:views:$android-utils-version"
+  implementation "com.github.paperkite.android-utils:views:$android_utils_version"
 }
 ```
