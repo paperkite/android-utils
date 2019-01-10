@@ -1,13 +1,15 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.paperkite'
-
+apply plugin: 'kotlin-kapt'
 android {
 	compileSdkVersion 27
+	
+	dataBinding.enabled = true
+	
 	defaultConfig {
-		minSdkVersion 19
+		applicationId "nz.co.paperkite.androidutils.app"
+		minSdkVersion 21
 		targetSdkVersion 27
 		versionCode 1
 		versionName "1.0"
@@ -25,26 +27,14 @@ android {
 	
 }
 
-ext {
-	version_arch_lifecycle = '1.1.1'
-	version_arch_room = '1.1.1'
-}
-
 dependencies {
+	implementation project(':arch')
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
-	
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 	implementation "com.android.support:appcompat-v7:$version_supportlib"
-	
-	api "android.arch.lifecycle:extensions:$version_arch_lifecycle"
-	kapt "android.arch.lifecycle:compiler:$version_arch_lifecycle"
-	implementation "android.arch.persistence.room:runtime:$version_arch_room"
-	kapt "android.arch.persistence.room:compiler:$version_arch_room"
-	implementation "android.arch.persistence.room:rxjava2:$version_arch_room"
-	implementation "android.arch.paging:runtime:1.0.1"
-	
+	implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 	testImplementation 'junit:junit:4.12'
-	
 	androidTestImplementation 'com.android.support.test:runner:1.0.2'
 	androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+	
 }
