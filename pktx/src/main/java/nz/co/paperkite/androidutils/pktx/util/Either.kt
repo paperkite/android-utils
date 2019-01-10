@@ -1,4 +1,4 @@
-package nz.co.paperkite.androidutils.util
+package nz.co.paperkite.androidutils.pktx.util
 
 /**
  * Created by nate on 15/03/18.

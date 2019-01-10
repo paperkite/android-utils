@@ -1,4 +1,4 @@
-package nz.co.paperkite.androidutils.util
+package nz.co.paperkite.androidutils.pktx.util
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

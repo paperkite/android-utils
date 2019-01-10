@@ -1,8 +1,7 @@
-package nz.co.paperkite.pk_android_playbook
+package nz.co.paperkite.androidutils.pktx
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
